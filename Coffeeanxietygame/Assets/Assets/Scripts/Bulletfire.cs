@@ -36,7 +36,7 @@ public class Bulletfire : MonoBehaviour
 
             GameObject bul = Bulletpoolscript.bulletpoolinstance.GetBullet(); //Retrieve a bullet, make it active and fly in the right direction. 
             bul.transform.position = transform.position;
-            bul.transform.rotation = transform.rotation;
+            bul.transform.Rotate(0, 0, 90, Space.Self);
             bul.SetActive(true);
             bul.GetComponent<Bulletscript>().setMoveDirection(bulDir);
 
