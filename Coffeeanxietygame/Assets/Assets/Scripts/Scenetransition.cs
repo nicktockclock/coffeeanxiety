@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Scenetransition : MonoBehaviour
 {
-    public Animator sceneSition;
+    //public Animator sceneSition;
     public string sceneName;
     private int sceneIndex;
     
@@ -33,7 +33,7 @@ public class Scenetransition : MonoBehaviour
         //Code snippet that determines what scene to load, but also prevents loading the same scene while you're still in it.
         if (Input.GetKeyDown(KeyCode.Alpha0) && sceneIndex != 1)
         {
-            sceneName = "MainGame";
+            sceneName = "titlescreen";
             StartCoroutine(LoadScene());
         }
         if (Input.GetKeyDown(KeyCode.Alpha1) && sceneIndex != 0)
@@ -60,10 +60,10 @@ public class Scenetransition : MonoBehaviour
     IEnumerator LoadScene()
     {
      //Coroutine that loads the scene using the set scene name.    
-        sceneSition.SetTrigger("end");
+        //sceneSition.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(sceneName);
-        sceneSition.ResetTrigger("end");
+        //sceneSition.ResetTrigger("end");
         
         
     }
