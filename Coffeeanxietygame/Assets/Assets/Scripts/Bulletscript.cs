@@ -8,7 +8,7 @@ public class Bulletscript : MonoBehaviour
     private float moveSpeed;
     private void OnEnable()
     {
-        Invoke("Destroy", 3f);
+        Invoke("OnDestroy", 6f);
     }
     // Start is called before the first frame update
     void Start()

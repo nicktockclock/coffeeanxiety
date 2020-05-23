@@ -36,12 +36,14 @@ public class Bulletfire : MonoBehaviour
             Vector2 bulDir = (bulMoveVector - transform.position).normalized;
 
             GameObject bul = Bulletpoolscript.bulletpoolinstance.GetBullet(); //Retrieve a bullet, make it active and fly in the right direction. 
+            bul.tag = "badend";
+            bul.AddComponent<BoxCollider2D>();
             bul.transform.position = transform.position;
-            bul.transform.Rotate(0, 0, zAngle, Space.Self);
             bul.SetActive(true);
             bul.GetComponent<Bulletscript>().setMoveDirection(bulDir);
 
             angle += angleStep;
+            Debug.Log(angle);
       //  }
     }
     // Update is called once per frame

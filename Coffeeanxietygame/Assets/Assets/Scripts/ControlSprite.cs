@@ -27,6 +27,9 @@ public class ControlSprite : MonoBehaviour
             invincible = true;
             iframes = 2.0f;
             StartCoroutine(InvincibilityFrames());
+            if (collision.gameObject.tag=="badend"){
+                collision.gameObject.SetActive(false);
+            }
         }
     }
 

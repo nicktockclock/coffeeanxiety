@@ -38,6 +38,8 @@ public class Bulletpoolscript : MonoBehaviour
         {
             GameObject bul = Instantiate(pooledBullet);
             bul.SetActive(false);
+            var zAngle = Random.Range(60, 120);
+            bul.transform.Rotate(0, 0, zAngle, Space.Self);
             bullets.Add(bul);
             return (bul);
         }
