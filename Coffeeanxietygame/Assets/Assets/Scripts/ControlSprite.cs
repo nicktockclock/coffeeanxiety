@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class ControlSprite : MonoBehaviour
 {
+    public WordHolder words;
+    public Sprite[] faces;
+    public SpriteRenderer face;
     public float speed;
     public int hp;
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
     private bool invincible;
     private float iframes;
+    private string level;
     void Start(){
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         invincible = false;
+        face.sprite = faces[hp];
+        level = "one";
     }
 
     void Update(){
@@ -22,21 +28,23 @@ public class ControlSprite : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         Debug.Log("Here I am + " + hp);
-        if (!invincible){
+        if (!invincible && collision.gameObject.tag=="badend"){
             hp--;
+            face.sprite = faces[hp];
             invincible = true;
             iframes = 2.0f;
             StartCoroutine(InvincibilityFrames());
-            if (collision.gameObject.tag=="badend"){
-                collision.gameObject.SetActive(false);
-            }
+            collision.gameObject.SetActive(false);
+        }
+        else if(collision.gameObject.tag=="goodend"){
+            collision.gameObject.SetActive(false);
+            words.incrementcurrent(level);
         }
     }
 
     void FixedUpdate(){
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rigid.velocity = new Vector2(moveHorizontal*speed, moveVertical*speed);
     }
 
@@ -49,6 +57,7 @@ public class ControlSprite : MonoBehaviour
             }
             Flicker();
         }
+        sprite.enabled = true;
     }
 
     void Flicker(){

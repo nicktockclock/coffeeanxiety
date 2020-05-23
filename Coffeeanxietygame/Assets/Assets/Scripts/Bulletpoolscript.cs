@@ -40,6 +40,7 @@ public class Bulletpoolscript : MonoBehaviour
             bul.SetActive(false);
             var zAngle = Random.Range(60, 120);
             bul.transform.Rotate(0, 0, zAngle, Space.Self);
+            bul.transform.localScale = new Vector3(1.2f, 1.2f, 1);
             bullets.Add(bul);
             return (bul);
         }
