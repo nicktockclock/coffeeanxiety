@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Scenetransition : MonoBehaviour
 {
-    //public Animator sceneSition;
+    public Animator sceneSition;
     public string sceneName;
     private int sceneIndex;
     
@@ -60,10 +60,10 @@ public class Scenetransition : MonoBehaviour
     IEnumerator LoadScene()
     {
      //Coroutine that loads the scene using the set scene name.    
-        //sceneSition.SetTrigger("end");
+        sceneSition.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(sceneName);
-        //sceneSition.ResetTrigger("end");
+        sceneSition.ResetTrigger("end");
         
         
     }
