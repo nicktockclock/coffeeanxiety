@@ -27,7 +27,6 @@ public class ControlSprite : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        Debug.Log("Here I am + " + hp);
         if (!invincible && collision.gameObject.tag=="badend"){
             hp--;
             face.sprite = faces[hp];
