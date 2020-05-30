@@ -19,11 +19,11 @@ public class ControlSprite : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         invincible = false;
         face.sprite = faces[hp];
-        level = "one";
+        level = "three";
     }
 
     void Update(){
-        
+        Debug.Log(transform.position.y);
     }
 
     void OnCollisionEnter2D(Collision2D collision){
@@ -38,6 +38,9 @@ public class ControlSprite : MonoBehaviour
         else if(collision.gameObject.tag=="goodend"){
             collision.gameObject.SetActive(false);
             words.incrementcurrent(level);
+        }
+        else if(collision.gameObject.tag=="confidence"){
+            words.generateConfidence();
         }
     }
 
@@ -60,7 +63,6 @@ public class ControlSprite : MonoBehaviour
     }
 
     void Flicker(){
-        Debug.Log(iframes);
         sprite.enabled = !sprite.isVisible;
     }
 }
