@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlSprite : MonoBehaviour
 {
@@ -19,11 +20,13 @@ public class ControlSprite : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         invincible = false;
         face.sprite = faces[hp];
-        level = "three";
     }
 
     void Update(){
-        Debug.Log(transform.position.y);
+        if (hp==-1){
+            SceneManager.LoadScene(0);
+        }
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision){

@@ -13,6 +13,8 @@ public class Bulletfire : MonoBehaviour
     private float zAngle;
     private float zStep;
     private float threeStep;
+    private float time;
+
 
     [SerializeField]
     private float startangle = 359f, endangle = 180f;
@@ -29,19 +31,19 @@ public class Bulletfire : MonoBehaviour
     {
         zAngle = 60;
         zStep = 10;
-        level = "three";
+        level = LevelManager.Level;
         switch (level){
             case "tutorial":
                 break;
             case "one":
+                InvokeRepeating("FireMove", 2f, 0.4f);
                 break;
             case "two":
                 break;
             case "three":
-                words.generateConfidence();
-                xMove = true;
+                time = -2f;
                 StartCoroutine(LevelThreePattern());
-                InvokeRepeating("FireRandom", 0f, 0.4f);
+                InvokeRepeating("FireRandom", 2f, 0.4f);
                 break;
         }
         //InvokeRepeating("FireMove", 0f, 0.4f);
@@ -157,6 +159,7 @@ public class Bulletfire : MonoBehaviour
 
     private void FireMove()
     {
+        yMove = true;
         float angleStep = (endangle - startangle) / bulletsamount;
         float angle = startangle;
 
@@ -190,7 +193,9 @@ public class Bulletfire : MonoBehaviour
 
     IEnumerator LevelThreePattern(){
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
+        words.generateConfidence();
+        xMove = true;
         while (true){
             FireCurve();
             yield return new WaitForSeconds(3f);
@@ -236,10 +241,11 @@ public class Bulletfire : MonoBehaviour
             InvokeRepeating("FireRandom", 0f, 0.4f);
         }
         if (yMove){
-            transform.position = new Vector3(transform.position.x, yCurve.Evaluate((Time.time)), transform.position.z);
+            transform.position = new Vector3(transform.position.x, yCurve.Evaluate((time)), transform.position.z);
         }
         if (xMove){
-            transform.position = new Vector3(xCurve.Evaluate((Time.time)), transform.position.y, transform.position.z);
+            transform.position = new Vector3(xCurve.Evaluate((time)), transform.position.y, transform.position.z);
         }
+        time+=Time.deltaTime;
     }
 }
