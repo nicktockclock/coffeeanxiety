@@ -36,7 +36,7 @@ public class Scenetransition : MonoBehaviour
             sceneName = "titlescreen";
             StartCoroutine(LoadScene());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1) && sceneIndex != 0)
+        /*if (Input.GetKeyDown(KeyCode.Alpha1) && sceneIndex != 0)
         {
             sceneName = "TestBattleScene";
             StartCoroutine(LoadScene());
@@ -46,6 +46,7 @@ public class Scenetransition : MonoBehaviour
             sceneName = "CoopScene";
             StartCoroutine(LoadScene());
         }
+        */
         /*if (Input.GetKeyDown(KeyCode.Escape)) //Quit function. Doesn't work while in Unity Editor.
         {
             Application.Quit();
