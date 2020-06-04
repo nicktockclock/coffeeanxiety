@@ -30,7 +30,10 @@ public class CutscenePlayer : MonoBehaviour
 
     Image[] _images;
     public Image test;
+    public Sprite[] tutorial;
     public Sprite[] levelone;
+    public Sprite[] leveltwo;
+    public Sprite[] levelthree;
     Vector2 _centerPosition;
     float _currentCard;
     bool _hasFinished;
@@ -49,13 +52,48 @@ public class CutscenePlayer : MonoBehaviour
     void Start()
     {
         // Collect all the images inside this parent, ordered from front to back.
-        _images = new Image[levelone.Length];
-        for (int i = 0; i<levelone.Length; i++){
-            _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
-            _images[i].transform.SetParent(this.transform, false);
-            _images[i].sprite = levelone[i];
-            _images[i].rectTransform.anchoredPosition = Vector3.zero;
+        
+        switch (LevelManager.Level){
+            case "tutorial":
+                _images = new Image[tutorial.Length];
+                for (int i = 0; i<tutorial.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = tutorial[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
 
+                }
+                break;
+            case "one":
+                _images = new Image[levelone.Length];
+                for (int i = 0; i<levelone.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = levelone[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "two":
+                _images = new Image[leveltwo.Length];
+                for (int i = 0; i<leveltwo.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = leveltwo[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "three":
+                _images = new Image[levelthree.Length];
+                for (int i = 0; i<levelthree.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = levelthree[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
         }
         System.Array.Reverse(_images);
 
