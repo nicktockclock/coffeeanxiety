@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CutscenePlayer : MonoBehaviour
 {
@@ -26,9 +29,15 @@ public class CutscenePlayer : MonoBehaviour
     public UnityEvent OnFinishedStack;
 
     Image[] _images;
+    public Image test;
+    public Sprite[] tutorial;
+    public Sprite[] levelone;
+    public Sprite[] leveltwo;
+    public Sprite[] levelthree;
     Vector2 _centerPosition;
     float _currentCard;
     bool _hasFinished;
+    public Animator sceneSition;
 
     // Call this to move to the next card - you can hook this up to a UI button.
     public bool TryAdvance()
@@ -43,7 +52,49 @@ public class CutscenePlayer : MonoBehaviour
     void Start()
     {
         // Collect all the images inside this parent, ordered from front to back.
-        _images = GetComponentsInChildren<Image>();
+        
+        switch (LevelManager.Level){
+            case "tutorial":
+                _images = new Image[tutorial.Length];
+                for (int i = 0; i<tutorial.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = tutorial[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "one":
+                _images = new Image[levelone.Length];
+                for (int i = 0; i<levelone.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = levelone[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "two":
+                _images = new Image[leveltwo.Length];
+                for (int i = 0; i<leveltwo.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = leveltwo[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "three":
+                _images = new Image[levelthree.Length];
+                for (int i = 0; i<levelthree.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = levelthree[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+        }
         System.Array.Reverse(_images);
 
         // Remember where the lead image is.
@@ -73,7 +124,7 @@ public class CutscenePlayer : MonoBehaviour
 
                 // Fire an event - this way you can trigger sounds, scene changes, etc.
                 if (OnFinishedStack != null)
-                    OnFinishedStack.Invoke();
+                    StartCoroutine(LoadScene());
             }
 
             return;
@@ -84,7 +135,15 @@ public class CutscenePlayer : MonoBehaviour
         _currentCard = Mathf.MoveTowards(_currentCard, cardToShow, flipSpeed * Time.deltaTime);
         Layout();
     }
+    IEnumerator LoadScene()
+    {
+        //Coroutine that loads the scene using the set scene name.    
+        sceneSition.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(2);
+        sceneSition.ResetTrigger("end");
 
+    }
     // Update the layout of the cards for the current animation frame.
     void Layout()
     {

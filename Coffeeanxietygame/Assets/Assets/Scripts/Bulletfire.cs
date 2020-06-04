@@ -33,6 +33,7 @@ public class Bulletfire : MonoBehaviour
         zAngle = 60;
         zStep = 10;
         level = LevelManager.Level;
+        Debug.Log(level);
         switch (level){
             case "tutorial":
                 break;
@@ -43,6 +44,7 @@ public class Bulletfire : MonoBehaviour
             case "two":
                 break;
             case "three":
+            Debug.Log("HERERER");
                 time = -2f;
                 StartCoroutine(LevelThreePattern());
                 InvokeRepeating("FireRandom", 2f, 0.4f);
