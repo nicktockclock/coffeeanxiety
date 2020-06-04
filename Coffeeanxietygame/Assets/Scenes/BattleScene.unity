@@ -1987,6 +1987,8 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   words: {fileID: 1721336171}
+  bulletdrop: {fileID: 3277352272550645253, guid: 07b96c50a30bede4ea951b08ea986434,
+    type: 3}
   bulletsamount: 10
   startangle: 0
   endangle: 270
