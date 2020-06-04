@@ -7,6 +7,7 @@ public class Bulletfire : MonoBehaviour
     public AnimationCurve yCurve;
     public AnimationCurve xCurve;
     public WordHolder words;
+	public Bulletdrop bulletdrop;
     private string level;
     [SerializeField]
     private int bulletsamount = 10;
@@ -37,6 +38,7 @@ public class Bulletfire : MonoBehaviour
             case "tutorial":
                 break;
             case "one":
+				StartCoroutine(LevelOnePattern());
                 InvokeRepeating("FireMove", 2f, 0.4f);
                 break;
             case "two":
@@ -203,6 +205,14 @@ public class Bulletfire : MonoBehaviour
             yield return new WaitForSeconds(3f);
         }
     }
+	
+	IEnumerator LevelOnePattern() {
+		yield return new WaitForSeconds(Random.Range(5f, 10f));
+		while (true){
+			Instantiate(bulletdrop);
+			yield return new WaitForSeconds(Random.Range(5f, 10f));
+		}
+	}
         
     // Update is called once per frame
     void Update()

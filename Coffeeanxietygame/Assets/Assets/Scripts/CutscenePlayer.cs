@@ -98,7 +98,7 @@ public class CutscenePlayer : MonoBehaviour
         System.Array.Reverse(_images);
 
         // Remember where the lead image is.
-        _centerPosition = _images[0].rectTransform.anchoredPosition;
+      //  _centerPosition = _images[0].rectTransform.anchoredPosition;
 
         // Update the display of the rest of the stack.
         Layout();
