@@ -29,11 +29,18 @@ public class CutscenePlayer : MonoBehaviour
     public UnityEvent OnFinishedStack;
 
     Image[] _images;
+
+    public Text message;
     public Image test;
     public Sprite[] tutorial;
     public Sprite[] levelone;
     public Sprite[] leveltwo;
     public Sprite[] levelthree;
+    public Sprite[] tutorialwin;
+    public Sprite[] levelonewin;
+    public Sprite[] leveltwowin;
+    public Sprite[] levelthreewin;
+    public Sprite[] loser;
     Vector2 _centerPosition;
     float _currentCard;
     bool _hasFinished;
@@ -94,6 +101,57 @@ public class CutscenePlayer : MonoBehaviour
 
                 }
                 break;
+            case "tutorialwin":
+                _images = new Image[tutorialwin.Length];
+                for (int i = 0; i<tutorialwin.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = tutorialwin[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "onewin":
+                _images = new Image[levelonewin.Length];
+                for (int i = 0; i<levelonewin.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = levelonewin[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "twowin":
+                _images = new Image[leveltwowin.Length];
+                for (int i = 0; i<leveltwowin.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = leveltwowin[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
+            case "threewin":
+            _images = new Image[levelthreewin.Length];
+            for (int i = 0; i<levelthreewin.Length; i++){
+                _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                _images[i].transform.SetParent(this.transform, false);
+                _images[i].sprite = levelthreewin[i];
+                _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+            }
+            break;
+            case "loser":
+                message.text = "Press space to retry";
+                _images = new Image[loser.Length];
+                for (int i = 0; i<loser.Length; i++){
+                    _images[i] = Instantiate(test, Vector3.zero, Quaternion.identity);
+                    _images[i].transform.SetParent(this.transform, false);
+                    _images[i].sprite = loser[i];
+                    _images[i].rectTransform.anchoredPosition = Vector3.zero;
+
+                }
+                break;
         }
         System.Array.Reverse(_images);
 
@@ -138,11 +196,19 @@ public class CutscenePlayer : MonoBehaviour
     IEnumerator LoadScene()
     {
         //Coroutine that loads the scene using the set scene name.    
-        sceneSition.SetTrigger("end");
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(2);
-        sceneSition.ResetTrigger("end");
-
+        if (LevelManager.Level=="tutorialwin"||LevelManager.Level=="onewin"||LevelManager.Level=="twowin"||
+        LevelManager.Level=="threewin"){
+            sceneSition.SetTrigger("end");
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene(0);
+            sceneSition.ResetTrigger("end");
+        }
+        else{
+            sceneSition.SetTrigger("end");
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene(2);
+            sceneSition.ResetTrigger("end");
+        }
     }
     // Update the layout of the cards for the current animation frame.
     void Layout()

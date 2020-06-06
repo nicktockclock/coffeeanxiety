@@ -6,7 +6,9 @@ public class WordHolder : MonoBehaviour
 {
     public Sprite[] sentences;
     public Sprite[] levelonedamage;
+    public Sprite[] tutorialcorrect;
     public Sprite[] levelonecorrect;
+    public Sprite[] leveltwocorrect;
     public SpriteRenderer sentence;
     public SpriteRenderer[] construct;
     public GameObject confidence;
@@ -16,20 +18,24 @@ public class WordHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = "three";
+        level = LevelManager.Level;
         switch (level){
             case "tutorial":
+                max = tutorialcorrect.Length;
+                current = 0;
                 break;
             case "one":
+                max = levelonecorrect.Length;
+                current = 0;
                 break;
             case "two":
+                max = leveltwocorrect.Length;
+                current = 0;
                 break;
             case "three":
-                confidence.active=true;
+                confidence.SetActive(true);
                 break;
         }
-        max = levelonecorrect.Length;
-        current = 0;
         sentence.sprite = sentences[0];
     }
 
@@ -39,15 +45,34 @@ public class WordHolder : MonoBehaviour
         
     }
 
+    public bool checkwon(){
+        if (current==max-1){
+            return true;
+        }
+        return false;
+    }
+
     public void generateConfidence(){
         confidence.transform.position = (new Vector3(Random.Range(-11, 11), Random.Range(-8, 2), 0));
     }
 
     public void incrementcurrent(string level){
-        switch(level){
+        switch (level){
+            case "tutorial":
+                construct[current].sprite = tutorialcorrect[current];
+                if (current!=tutorialcorrect.Length-1){
+                    current++;
+                }
+                break;
             case "one":
-            construct[current].sprite = levelonecorrect[current];
+                construct[current].sprite = levelonecorrect[current];
                 if (current!=levelonecorrect.Length-1){
+                    current++;
+                }
+                break;
+            case "two":
+                construct[current].sprite = leveltwocorrect[current];
+                if (current!=leveltwocorrect.Length-1){
                     current++;
                 }
                 break;
@@ -69,9 +94,13 @@ public class WordHolder : MonoBehaviour
     }
 
     public Sprite retrieveCorrectWord(string level){
-        switch(level){
+        switch (level){
+            case "tutorial":
+                return tutorialcorrect[current];
             case "one":
-            return levelonecorrect[current];
+                return levelonecorrect[current];
+            case "two":
+                return leveltwocorrect[current];
         }
         return null;
     }

@@ -36,6 +36,7 @@ public class Bulletfire : MonoBehaviour
         Debug.Log(level);
         switch (level){
             case "tutorial":
+                InvokeRepeating("FireMove", 2f, 0.8f);
                 break;
             case "one":
 				StartCoroutine(LevelOnePattern());
@@ -163,7 +164,10 @@ public class Bulletfire : MonoBehaviour
 
     private void FireMove()
     {
-        yMove = true;
+        if (level!="tutorial"){
+            yMove = true;
+        }
+        
         float angleStep = (endangle - startangle) / bulletsamount;
         float angle = startangle;
 
@@ -194,6 +198,7 @@ public class Bulletfire : MonoBehaviour
         angle += angleStep;
         
     }
+    
 
     IEnumerator LevelThreePattern(){
 
