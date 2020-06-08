@@ -11,6 +11,7 @@ public class ControlSprite : MonoBehaviour
     public Sprite[] bars;
     public Sprite[] faces;
     public SpriteRenderer face;
+
     public float speed;
     public int hp;
     private int confidencelevel;
@@ -108,9 +109,10 @@ public class ControlSprite : MonoBehaviour
                 words.generateConfidence();
             }
         }
-        else if (collision.gameObject.tag == "confidence")
+        else if (collision.gameObject.tag == "charmed")
         {
-            speed = speed / 2;
+           StartCoroutine(Charmed());
+           collision.gameObject.SetActive(false);
         }
     }
 
@@ -136,16 +138,19 @@ public class ControlSprite : MonoBehaviour
     {
         while (isCharmed)
         {
+            
             yield return new WaitForSeconds(3.0f);
+            sprite.color = Color.magenta;
             charmframes -= 3.0f;
             speed = speed / 2;
             if (charmframes<= 0.0f)
             {
                 isCharmed = false;
                 speed = speed * 2;
-
+                
             }
         }
+        sprite.color = Color.white;
     }
 
     void Flicker(){
