@@ -114,3 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db01be44eaac9524289268faee01a8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loveBullet: {fileID: 5233318450391514970, guid: 2c1fa7f579acb3e44ae6eb587e04c725,
+    type: 3}
+  girlhead: {fileID: 234462829233538195}
