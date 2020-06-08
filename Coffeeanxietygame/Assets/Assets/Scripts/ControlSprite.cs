@@ -17,7 +17,9 @@ public class ControlSprite : MonoBehaviour
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
     private bool invincible;
+    private bool isCharmed;
     private float iframes;
+    private float charmframes;
     private string level;
     void Start(){
         rigid = GetComponent<Rigidbody2D>();
@@ -106,6 +108,10 @@ public class ControlSprite : MonoBehaviour
                 words.generateConfidence();
             }
         }
+        else if (collision.gameObject.tag == "confidence")
+        {
+            speed = speed / 2;
+        }
     }
 
     void FixedUpdate(){
@@ -124,6 +130,22 @@ public class ControlSprite : MonoBehaviour
             Flicker();
         }
         sprite.enabled = true;
+    }
+
+    IEnumerator Charmed()
+    {
+        while (isCharmed)
+        {
+            yield return new WaitForSeconds(3.0f);
+            charmframes -= 3.0f;
+            speed = speed / 2;
+            if (charmframes<= 0.0f)
+            {
+                isCharmed = false;
+                speed = speed * 2;
+
+            }
+        }
     }
 
     void Flicker(){
