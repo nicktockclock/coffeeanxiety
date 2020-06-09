@@ -34,7 +34,7 @@ public class ButtonScript : MonoBehaviour
     }
 
     public void restart(){
-        StartCoroutine(ReloadLoadScene());
+        SceneManager.LoadScene(2);
     }
     IEnumerator LoadScene()
     {

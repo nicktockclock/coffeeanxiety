@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Girlheadcontroller : MonoBehaviour
 {
-    [SerializeField] GameObject loveBullet = null;
+    public GameObject loveBullet;
     public Animator girlhead;
     // Start is called before the first frame update
     void Start()
     {
-        DelayedDestroy();
+        
     }
 
     // Update is called once per frame
@@ -17,14 +17,8 @@ public class Girlheadcontroller : MonoBehaviour
     {
         
     }
-
-    IEnumerator DelayedDestroy()
-    {
-        GameObject.Instantiate(loveBullet);
-        girlhead.SetTrigger("hasSpawned");
-        yield return new WaitForSeconds(4.0f);
-        Destroy(gameObject);
-
-
+    public void Shoot(){
+        GameObject heart = Instantiate (loveBullet);
+        heart.transform.position = transform.position;
     }
 }

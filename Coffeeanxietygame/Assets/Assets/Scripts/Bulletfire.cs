@@ -8,6 +8,8 @@ public class Bulletfire : MonoBehaviour
     public AnimationCurve xCurve;
     public WordHolder words;
 	public GameObject bulletdrop;
+    public GameObject girlhead;
+    public GameObject holder;
     private string level;
     [SerializeField]
     private int bulletsamount = 10;
@@ -43,10 +45,11 @@ public class Bulletfire : MonoBehaviour
                 InvokeRepeating("FireMove", 2f, 0.4f);
                 break;
             case "two":
+                StartCoroutine(LevelTwoPattern());
+                InvokeRepeating("FireSpread", 2f, 0.4f);
                 break;
             case "three":
-            Debug.Log("HERERER");
-                time = -2f;
+                time = 0f;
                 StartCoroutine(LevelThreePattern());
                 InvokeRepeating("FireRandom", 2f, 0.4f);
                 break;
@@ -82,6 +85,7 @@ public class Bulletfire : MonoBehaviour
             bul.GetComponent<Bulletscript>().setMoveDirection(bulDir);
             Destroy(bul.GetComponent<BoxCollider2D>());
             bul.AddComponent<BoxCollider2D>();
+            bul.transform.SetParent(holder.transform);
             angle += angleStep;
         }
     }
@@ -117,6 +121,7 @@ public class Bulletfire : MonoBehaviour
             bul.GetComponent<Bulletscript>().setMoveDirection(bulDir);
             Destroy(bul.GetComponent<BoxCollider2D>());
             bul.AddComponent<BoxCollider2D>();
+            bul.transform.SetParent(holder.transform);
             angle += angleStep;
             zAngle+=20;
         }
@@ -151,6 +156,7 @@ public class Bulletfire : MonoBehaviour
         bul.GetComponent<Bulletscript>().setMoveDirection(bulDir);
         Destroy(bul.GetComponent<BoxCollider2D>());
         bul.AddComponent<BoxCollider2D>();
+        bul.transform.SetParent(holder.transform);
         angle += angleStep;
         zAngle+=zStep;
         if (zAngle==120){
@@ -195,6 +201,7 @@ public class Bulletfire : MonoBehaviour
         bul.GetComponent<Bulletscript>().setMoveDirection(bulDir);
         Destroy(bul.GetComponent<BoxCollider2D>());
         bul.AddComponent<BoxCollider2D>();
+        bul.transform.SetParent(holder.transform);
         angle += angleStep;
         
     }
@@ -210,6 +217,17 @@ public class Bulletfire : MonoBehaviour
             yield return new WaitForSeconds(3f);
         }
     }
+
+    IEnumerator LevelTwoPattern() {
+		yield return new WaitForSeconds(1f);
+		while (true){
+			GameObject girl = Instantiate(girlhead);
+			girl.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
+            girl.GetComponent<Girlheadcontroller>().Shoot();
+			yield return new WaitForSeconds(3f);
+            Destroy(girl);
+		}
+	}
 	
 	IEnumerator LevelOnePattern() {
 		yield return new WaitForSeconds(2f);

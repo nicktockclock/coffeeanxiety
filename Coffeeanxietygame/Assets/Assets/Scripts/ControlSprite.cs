@@ -11,10 +11,13 @@ public class ControlSprite : MonoBehaviour
     public Sprite[] bars;
     public Sprite[] faces;
     public SpriteRenderer face;
-
+    public GameObject cup;
+    public AudioClip hitbad;
+    public AudioClip hitgood;
     public float speed;
     public int hp;
     private int confidencelevel;
+    private int damagelevel;
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
     private bool invincible;
@@ -23,12 +26,14 @@ public class ControlSprite : MonoBehaviour
     private float charmframes;
     private string level;
     void Start(){
+        hp = 3;
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         invincible = false;
         face.sprite = faces[hp];
         level = LevelManager.Level;
         confidencelevel = 0;
+        damagelevel = 0;
         if (level=="three"){
             bar.sprite = bars[3];
         }
@@ -40,6 +45,7 @@ public class ControlSprite : MonoBehaviour
 
     void Update(){
         if (hp==-1){
+            LevelManager.Prev = level;
             LevelManager.Level = "loser";
             SceneManager.LoadScene(1);
         }
@@ -60,23 +66,32 @@ public class ControlSprite : MonoBehaviour
                     break;
             }
         }
-        else if (confidencelevel<4){
-            bar.sprite = bars[confidencelevel];
+        else if (damagelevel<4){
+            bar.sprite = bars[damagelevel];
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        if (!invincible && collision.gameObject.tag=="badend"){
-            hp--;
-            face.sprite = faces[hp];
-            invincible = true;
-            iframes = 2.0f;
-            StartCoroutine(InvincibilityFrames());
-            collision.gameObject.SetActive(false);
-            confidencelevel++;
-            UpdateBar();
+        if (collision.gameObject.tag=="badend"){
+            if (!invincible){
+                AudioSource.PlayClipAtPoint(hitbad, transform.position);
+                hp--;
+                if (hp>=0){
+                    face.sprite = faces[hp];
+                }
+                invincible = true;
+                iframes = 2.0f;
+                StartCoroutine(InvincibilityFrames());
+                collision.gameObject.SetActive(false);
+                damagelevel++;
+                UpdateBar();
+            }
+            else{
+                collision.gameObject.SetActive(false);
+            }
         }
         else if(collision.gameObject.tag=="goodend"){
+            AudioSource.PlayClipAtPoint(hitgood, transform.position);
             if (words.checkwon()){
                 switch (level){
                     case "tutorial":
@@ -96,9 +111,11 @@ public class ControlSprite : MonoBehaviour
             else{
                 collision.gameObject.SetActive(false);
                 words.incrementcurrent(level);
+                UpdateGoodWords();
             }
         }
         else if(collision.gameObject.tag=="confidence"){
+            AudioSource.PlayClipAtPoint(hitgood, transform.position);
             confidencelevel++;
             if (confidencelevel==8){
                 LevelManager.Level = "threewin";
@@ -111,8 +128,20 @@ public class ControlSprite : MonoBehaviour
         }
         else if (collision.gameObject.tag == "charmed")
         {
-           StartCoroutine(Charmed());
-           collision.gameObject.SetActive(false);
+            AudioSource.PlayClipAtPoint(hitbad, transform.position);
+            if (!isCharmed){
+                isCharmed = true;
+                StartCoroutine(Charmed());
+            }
+            collision.gameObject.SetActive(false);
+        }
+    }
+
+    void UpdateGoodWords(){
+        foreach (Transform t in cup.transform){
+            if (t.gameObject.tag=="goodend"){
+                t.gameObject.GetComponent<SpriteRenderer>().sprite = words.retrieveCorrectWord(level);
+            }
         }
     }
 
@@ -135,21 +164,12 @@ public class ControlSprite : MonoBehaviour
     }
 
     IEnumerator Charmed()
-    {
-        while (isCharmed)
-        {
-            
-            yield return new WaitForSeconds(3.0f);
-            sprite.color = Color.magenta;
-            charmframes -= 3.0f;
-            speed = speed / 2;
-            if (charmframes<= 0.0f)
-            {
-                isCharmed = false;
-                speed = speed * 2;
-                
-            }
-        }
+    {  
+        sprite.color = Color.magenta;
+        speed = speed / 2;
+        yield return new WaitForSeconds(3.0f);
+        isCharmed = false;
+        speed = speed * 2;
         sprite.color = Color.white;
     }
 

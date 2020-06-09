@@ -121,6 +121,150 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &143930157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143930160}
+  - component: {fileID: 143930159}
+  - component: {fileID: 143930158}
+  m_Layer: 0
+  m_Name: AudioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &143930158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143930157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d23579a462859f4fbd8668f47fea262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorial: {fileID: 8300000, guid: 9dd195200055d6645bc3a6cf2cdd311b, type: 3}
+  levelone: {fileID: 8300000, guid: 6a7c5016f0f3e6e45ba3bfa8c07af291, type: 3}
+  leveltwo: {fileID: 8300000, guid: 6a7c5016f0f3e6e45ba3bfa8c07af291, type: 3}
+  levelthree: {fileID: 8300000, guid: 9dd195200055d6645bc3a6cf2cdd311b, type: 3}
+--- !u!82 &143930159
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143930157}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.499
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &143930160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143930157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 511.93054, y: 342.3593, z: -747.74225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &150731571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1984,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 61e8f89fc7c44ed4b9e90c0893b19a7c, type: 3}
   - {fileID: 21300000, guid: bec230dca947eb144806e2998d759b5e, type: 3}
   face: {fileID: 1479593000}
+  cup: {fileID: 1721336170}
+  hitbad: {fileID: 8300000, guid: 97c006a078ff115448b69100ef49188c, type: 3}
+  hitgood: {fileID: 8300000, guid: 54dbc986f0c735a46b8745c6c55d87cd, type: 3}
   speed: 8
   hp: 3
 --- !u!50 &1305787451
@@ -2289,12 +2436,30 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 38f48260d6c344b48a003e58f4abbaee, type: 3}
   - {fileID: 21300000, guid: 73670482a58b153418918b4e6b162f64, type: 3}
   - {fileID: 21300000, guid: f2d61ea25e6a9764ba368646ca12a72f, type: 3}
+  tutorialdamage:
+  - {fileID: 21300000, guid: b435ded6a11ccf5448cfbaff60240f80, type: 3}
+  - {fileID: 21300000, guid: 11731b18186c3464588bd1e3d303ffc2, type: 3}
+  - {fileID: 21300000, guid: e8b45cd24802e8c419846456f56378b9, type: 3}
+  - {fileID: 21300000, guid: 4da1c97e71fd1bf48baf73102e5283b6, type: 3}
+  - {fileID: 21300000, guid: 100154e16329d7a4eb64fecaee3dc72d, type: 3}
   levelonedamage:
-  - {fileID: 21300000, guid: b15e56e56f7aa524da65db4c9e373711, type: 3}
-  - {fileID: 21300000, guid: 836d5cd2819e09b408390728079fe063, type: 3}
-  - {fileID: 21300000, guid: 11a90d04ff042c1469be5bcc59b0720a, type: 3}
-  - {fileID: 21300000, guid: 6311346907f40be43861ba344a01a7fd, type: 3}
-  - {fileID: 21300000, guid: eac001e89f2b0b24ca06cecd438cd736, type: 3}
+  - {fileID: 21300000, guid: 72c696b0d9069324a85752edd9262ab4, type: 3}
+  - {fileID: 21300000, guid: 680f3119112d2904cb40af62783fd7c6, type: 3}
+  - {fileID: 21300000, guid: 096a15dca9f590f488994ccfebe86fbd, type: 3}
+  - {fileID: 21300000, guid: 0be48af7da2454f46bb8c03bbf085958, type: 3}
+  - {fileID: 21300000, guid: 75dca831f700d87478971ca1475038ea, type: 3}
+  leveltwodamage:
+  - {fileID: 21300000, guid: adaa7a24ba2c16a4689dea0aaf61d4cb, type: 3}
+  - {fileID: 21300000, guid: 9cc2bfcd18a7bad44bfe4fc018377ba5, type: 3}
+  - {fileID: 21300000, guid: e9978e5d7626ae844ac830a65d69b744, type: 3}
+  - {fileID: 21300000, guid: d277eaae85e32dd40900606f85773705, type: 3}
+  - {fileID: 21300000, guid: 8c479287d22b52b40990c3bb4b1fa2e3, type: 3}
+  levelthreedamage:
+  - {fileID: 21300000, guid: 253485e028dab19408b321ee502d5c5b, type: 3}
+  - {fileID: 21300000, guid: aa5465f75c1af4a4c91c008ed1f1d112, type: 3}
+  - {fileID: 21300000, guid: f945c351735bd194abb3cf3152725481, type: 3}
+  - {fileID: 21300000, guid: 087a74b4ae45aa44bb775a553423706a, type: 3}
+  - {fileID: 21300000, guid: bc8b81ff46d30334c9ffe77a01dee512, type: 3}
   tutorialcorrect:
   - {fileID: 21300000, guid: e12304feff98d254286b338c74f0dbce, type: 3}
   - {fileID: 21300000, guid: cacc54ef0432ab9408484349a57d141f, type: 3}
@@ -2320,6 +2485,8 @@ MonoBehaviour:
   - {fileID: 1259399071}
   - {fileID: 1123430037}
   - {fileID: 1184033374}
+  - {fileID: 1425251660}
+  - {fileID: 1521167333}
   confidence: {fileID: 840202733}
 --- !u!4 &1721336172
 Transform:
@@ -2745,17 +2912,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.9977262
       value: -0.0144228935
-      inSlope: -2.9811542
-      outSlope: -2.9811542
+      inSlope: -3.928375
+      outSlope: -3.928375
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.9951779
-      value: -4.0027514
-      inSlope: -0.012040138
-      outSlope: -0.012040138
+      time: 2.0187726
+      value: -6.0314083
+      inSlope: 0.12215543
+      outSlope: 0.12215543
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -2763,8 +2930,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 3.0000935
       value: -0.008776844
-      inSlope: 3.9744377
-      outSlope: 3.9744377
+      inSlope: 6.1372705
+      outSlope: 6.1372705
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -2824,8 +2991,10 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 4
   words: {fileID: 1721336171}
-  bulletdrop: {fileID: 3277352272550645253, guid: 07b96c50a30bede4ea951b08ea986434,
+  bulletdrop: {fileID: 5129394921119407327, guid: 07b96c50a30bede4ea951b08ea986434,
     type: 3}
+  girlhead: {fileID: 828765273314870255, guid: 4a7964bf1b5c96f45b8bd1f8cbe2e039, type: 3}
+  holder: {fileID: 1721336170}
   bulletsamount: 10
   startangle: 0
   endangle: 270

@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     void Awake(){
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
     
     private static string level;
@@ -19,6 +19,19 @@ public class LevelManager : MonoBehaviour
         set 
         {
             level = value;
+        }
+    }
+    private static string prev;
+
+    public static string Prev 
+    {
+        get 
+        {
+            return prev;
+        }
+        set 
+        {
+            prev = value;
         }
     }
 }

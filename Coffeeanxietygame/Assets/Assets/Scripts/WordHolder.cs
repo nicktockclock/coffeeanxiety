@@ -5,7 +5,10 @@ using UnityEngine;
 public class WordHolder : MonoBehaviour
 {
     public Sprite[] sentences;
+    public Sprite[] tutorialdamage;
     public Sprite[] levelonedamage;
+    public Sprite[] leveltwodamage;
+    public Sprite[] levelthreedamage;
     public Sprite[] tutorialcorrect;
     public Sprite[] levelonecorrect;
     public Sprite[] leveltwocorrect;
@@ -36,7 +39,7 @@ public class WordHolder : MonoBehaviour
                 confidence.SetActive(true);
                 break;
         }
-        sentence.sprite = sentences[0];
+        //sentence.sprite = sentences[0];
     }
 
     // Update is called once per frame
@@ -82,13 +85,13 @@ public class WordHolder : MonoBehaviour
     public Sprite retrieveDamageWord(string level){
         switch(level){
             case "tutorial":
-            return levelonedamage[Random.Range(0, levelonedamage.Length-1)];
+            return tutorialdamage[Random.Range(0, levelonedamage.Length-1)];
             case "one":
             return levelonedamage[Random.Range(0, levelonedamage.Length-1)];
             case "two":
-            return levelonedamage[Random.Range(0, levelonedamage.Length-1)];
+            return leveltwodamage[Random.Range(0, levelonedamage.Length-1)];
             case "three":
-            return levelonedamage[Random.Range(0, levelonedamage.Length-1)];
+            return levelthreedamage[Random.Range(0, levelonedamage.Length-1)];
         }
         return null;
     }

@@ -203,6 +203,13 @@ public class CutscenePlayer : MonoBehaviour
             SceneManager.LoadScene(0);
             sceneSition.ResetTrigger("end");
         }
+        else if (LevelManager.Level=="loser"){
+            sceneSition.SetTrigger("end");
+            LevelManager.Level = LevelManager.Prev;
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene(2);
+            sceneSition.ResetTrigger("end");
+        }
         else{
             sceneSition.SetTrigger("end");
             yield return new WaitForSeconds(1.5f);
