@@ -7,7 +7,7 @@ public class Bulletfire : MonoBehaviour
     public AnimationCurve yCurve;
     public AnimationCurve xCurve;
     public WordHolder words;
-	public Bulletdrop bulletdrop;
+	public GameObject bulletdrop;
     private string level;
     [SerializeField]
     private int bulletsamount = 10;
@@ -212,10 +212,12 @@ public class Bulletfire : MonoBehaviour
     }
 	
 	IEnumerator LevelOnePattern() {
-		yield return new WaitForSeconds(Random.Range(5f, 10f));
+		yield return new WaitForSeconds(2f);
 		while (true){
-			Instantiate(bulletdrop);
-			yield return new WaitForSeconds(Random.Range(5f, 10f));
+			GameObject drop = Instantiate(bulletdrop);
+			drop.transform.position = new Vector3(Random.Range(-10, 10), 8, 0);
+			drop.AddComponent<BoxCollider2D>();
+			yield return new WaitForSeconds(Random.Range(1f, 3f));
 		}
 	}
         
