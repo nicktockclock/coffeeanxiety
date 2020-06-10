@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6b775f1c853dee64b9e2761a824c319e, type: 3}
   - {fileID: 21300000, guid: 4be43a92993d0094abf8ab0f2be12b8d, type: 3}
   levelone:
-  - {fileID: 21300000, guid: 2b4fcef30df703e44ac7ba3fa7525e03, type: 3}
+  - {fileID: 21300000, guid: 07c55f020ffae554596f8fb4c3376db8, type: 3}
   - {fileID: 21300000, guid: bf2db2164cdecd244852b5b2db791ee7, type: 3}
   - {fileID: 21300000, guid: b1e649f687fadd643a38f56cc7b1b9e0, type: 3}
   - {fileID: 21300000, guid: f00608bc06ba234479923c712b642193, type: 3}
@@ -208,15 +208,15 @@ MonoBehaviour:
   tutorialwin:
   - {fileID: 21300000, guid: 8f057905b3b9a5d45adc69b851fac357, type: 3}
   levelonewin:
-  - {fileID: 21300000, guid: 8b71aea5e35dee644862167511eca014, type: 3}
-  - {fileID: 21300000, guid: 908732babead66b4cac7760bd3a26b12, type: 3}
+  - {fileID: 21300000, guid: be8777ea613b2fe46beeb5a4e5e8a358, type: 3}
+  - {fileID: 21300000, guid: 2deae36d58e67474191a2ade17a7e0ec, type: 3}
   - {fileID: 21300000, guid: 8f057905b3b9a5d45adc69b851fac357, type: 3}
   leveltwowin:
   - {fileID: 21300000, guid: d970fa8325fe3dc4e907704da3ae5315, type: 3}
   - {fileID: 21300000, guid: cde9b6815df8df84fa4de8982eaf9e5e, type: 3}
   - {fileID: 21300000, guid: 8f057905b3b9a5d45adc69b851fac357, type: 3}
   levelthreewin:
-  - {fileID: 21300000, guid: b5d96136c70865b4d92a01a3dfe76c35, type: 3}
+  - {fileID: 21300000, guid: 514689353c9153747950f0a634c5bf9c, type: 3}
   - {fileID: 21300000, guid: 906f3bd338cabf948bac7d4c536f53d3, type: 3}
   - {fileID: 21300000, guid: 8f057905b3b9a5d45adc69b851fac357, type: 3}
   loser:
