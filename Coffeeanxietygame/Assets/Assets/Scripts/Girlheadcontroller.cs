@@ -19,6 +19,7 @@ public class Girlheadcontroller : MonoBehaviour
     }
     public void Shoot(){
         GameObject heart = Instantiate (loveBullet);
+        girlhead.SetTrigger("hasSpawned");
         heart.transform.position = transform.position;
     }
 }
