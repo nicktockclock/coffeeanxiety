@@ -222,7 +222,7 @@ public class Bulletfire : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		while (true){
 			GameObject girl = Instantiate(girlhead);
-			girl.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
+			girl.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(0, 10), 0);
             girl.GetComponent<Girlheadcontroller>().Shoot();
 			yield return new WaitForSeconds(3f);
             Destroy(girl);
